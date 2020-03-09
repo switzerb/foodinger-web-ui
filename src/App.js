@@ -1,21 +1,13 @@
 import React from 'react';
-import {
-  Container,
-  AppBar,
-  Toolbar,
-  Typography
-} from '@material-ui/core'
+import { Container } from '@material-ui/core'
+import AppHeader from "./AppHeader";
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
       <Container maxWidth="lg">
-        <AppBar>
-          <Toolbar>
-            <Typography variant="h6">Foodinger</Typography>
-          </Toolbar>
-        </AppBar>
+          <AppHeader />
         <div className="App">
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />

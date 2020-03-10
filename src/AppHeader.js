@@ -7,11 +7,11 @@ import {
     Typography
 } from '@material-ui/core';
 import {
-    withStyles,
     makeStyles
 } from '@material-ui/core/styles'
 import {
     Link,
+    useParams,
     withRouter
 } from 'react-router-dom';
 import Logo from "./Logo";
@@ -33,8 +33,9 @@ const styles = makeStyles(theme => ({
     }
 }));
 
-const AppHeader = () => {
+const AppHeader = (props) => {
     const classes = styles();
+    const {pathname} = props.location;
 
     return <AppBar className={classes.root}>
             <Toolbar>
@@ -43,14 +44,14 @@ const AppHeader = () => {
                     Foodinger
                 </Typography>
                 <Tabs
-                    value={"library"}
+                    value={pathname.substring(1)}
                     indicatorColor="primary"
                     textColor="primary"
                 >
                     <Tab icon={<MenuBookIcon />}     component={Link} to="library"  label="Library"   value="library" />
                     <Tab icon={<EventNoteIcon />}    component={Link} to="planner"  label="Planner"   value="planner"/>
                     <Tab icon={<ShoppingCartIcon />} component={Link} to="shopping" label="Shopping"  value="shopping"/>
-                    <Tab icon={<ListIcon />}         component={Link} to="tasks"    label="Tasks"     value="Tasks"/>
+                    <Tab icon={<ListIcon />}         component={Link} to="tasks"    label="Tasks"     value="tasks"/>
                 </Tabs>
                 <IconButton><AssignmentIcon /></IconButton>
                 <IconButton><AccountCircle /></IconButton>

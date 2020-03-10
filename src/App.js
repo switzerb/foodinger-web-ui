@@ -14,7 +14,7 @@ import Tasks from "./Tasks";
 
 function App() {
     return (
-        <Container maxWidth="lg">
+        <Container style={{ marginTop: "100px" }} maxWidth="lg">
             <AppHeader/>
             <div className="App">
                 <Switch>

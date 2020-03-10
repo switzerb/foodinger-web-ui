@@ -40,7 +40,7 @@ const AppHeader = (props) => {
     return <AppBar className={classes.root}>
             <Toolbar>
                 <Logo />
-                <Typography className={classes.title}>
+                <Typography className={classes.title} color="textPrimary">
                     Foodinger
                 </Typography>
                 <Tabs

@@ -5,19 +5,24 @@ import SearchBar from "./SearchBar";
 
 const recipes = [
     {
-        title: "Tacos Al Pastor"
+        name: "Tacos Al Pastor",
+        img: "https://static01.nyt.com/images/2019/06/05/dining/04Camararex2/merlin_155267136_8a0323b8-1d07-4f62-ae0b-f6dbc82d33c6-articleLarge.jpg"
     },
     {
-        title: "Pancakes"
+        name: "Pancakes",
+        img: "https://static01.nyt.com/images/2017/03/24/dining/24COOKING-CLASSICPANCAKES/24COOKING-CLASSICPANCAKES-articleLarge.jpg"
     },
     {
-        title: "Chicken Francese"
+        name: "Chicken Francese",
+        img: "https://static01.nyt.com/images/2018/12/28/dining/as-chicken-piccata/as-chicken-piccata-articleLarge-v2.jpg"
     },
     {
-        title: "Chicken Enchiladas"
+        name: "Chicken Enchiladas",
+        img: "https://static01.nyt.com/images/2017/04/06/dining/06COOKING-ENCHILADAS1/06COOKING-ENCHILADAS1-articleLarge.jpg"
     },
     {
-        title: "Crepes"
+        name: "Crepes",
+        img: "https://static01.nyt.com/images/2016/05/28/dining/28COOKING-CREPES2/28COOKING-CREPES2-articleLarge.jpg"
     }
 ];
 

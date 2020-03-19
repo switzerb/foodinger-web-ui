@@ -45,12 +45,12 @@ const RecipeCard = ({recipe}) => {
                     component="img"
                     alt="Contemplative Reptile"
                     height="140"
-                    image="https://source.unsplash.com/collection/251966"
-                    title="Contemplative Reptile"
+                    image={recipe.img}
+                    title={recipe.name}
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
-                        {recipe.title}
+                        {recipe.name}
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
                         Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging

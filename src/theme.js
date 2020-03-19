@@ -1,7 +1,7 @@
-import { createMuiTheme } from "@material-ui/core"
+import { createMuiTheme, responsiveFontSizes } from "@material-ui/core"
 import { red, deepOrange } from "@material-ui/core/colors"
 
-const theme = createMuiTheme({
+let theme = createMuiTheme({
         palette: {
             primary: {
                 main: red["900"]
@@ -11,11 +11,11 @@ const theme = createMuiTheme({
             },
         },
         typography: {
-            h1: {
-                fontSize: '2rem'
-            }
-        }
+            fontFamily: 'Raleway, Arial',
+        },
+        spacing: 5
     }
 );
+theme = responsiveFontSizes(theme);
 
 export default theme;

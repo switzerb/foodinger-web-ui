@@ -8,7 +8,6 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import CardActions from "@material-ui/core/CardActions";
 import Button from "@material-ui/core/Button";
-import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import {
@@ -60,8 +59,8 @@ const RecipeCard = ({recipe}) => {
             </CardActionArea>
             <CardActions>
                     <Button startIcon={<Edit/>}>Edit</Button>
-                    <Button startIcon={<AddBox/>}>Plan</Button>
-                    <Button startIcon={<Queue/>}>Plan Copy</Button>
+                    <Button onClick={handleClick} startIcon={<AddBox/>}>Plan</Button>
+                    <Button onClick={handleClick} startIcon={<Queue/>}>Plan Copy</Button>
             </CardActions>
             <Menu
                 id="simple-menu"

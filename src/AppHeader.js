@@ -22,6 +22,10 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
 import ListIcon from '@material-ui/icons/List';
 import EventNoteIcon from '@material-ui/icons/EventNote';
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import Card from "@material-ui/core/Card";
+import TextField from "@material-ui/core/TextField";
 
 const styles = makeStyles(theme => ({
     root: {
@@ -36,6 +40,24 @@ const styles = makeStyles(theme => ({
 const AppHeader = (props) => {
     const classes = styles();
     const {pathname} = props.location;
+    const [whiteboard, setWhiteBoard] = React.useState(null);
+    const [account, setAccount] = React.useState(null);
+
+    const handleWBOpen = event => {
+        setWhiteBoard(event.currentTarget);
+    };
+
+    const handleWBClose = () => {
+        setWhiteBoard(null);
+    };
+
+    const handleAccountOpen = event => {
+      setAccount(event.currentTarget)
+    };
+
+    const handleAccountClose = () => {
+      setAccount(null);
+    };
 
     return <AppBar className={classes.root}>
             <Toolbar>
@@ -53,10 +75,36 @@ const AppHeader = (props) => {
                     <Tab icon={<ShoppingCartIcon />} component={Link} to="shopping" label="Shopping"  value="shopping"/>
                     <Tab icon={<ListIcon />}         component={Link} to="tasks"    label="Tasks"     value="tasks"/>
                 </Tabs>
-                <IconButton><AssignmentIcon /></IconButton>
-                <IconButton><AccountCircle /></IconButton>
+                <IconButton onClick={handleWBOpen}><AssignmentIcon /></IconButton>
+                <IconButton onClick={handleAccountOpen}><AccountCircle /></IconButton>
             </Toolbar>
-        </AppBar>
+        <Menu
+            id="whiteboard"
+            anchorEl={whiteboard}
+            keepMounted
+            open={Boolean(whiteboard)}
+            onClose={handleWBClose}
+        >
+            <MenuItem onClick={handleWBClose}>Napalm</MenuItem>
+            <MenuItem onClick={handleWBClose}>WD40 and LightBulbs</MenuItem>
+            <MenuItem onClick={handleWBClose}>Milk</MenuItem>
+            <MenuItem onClick={handleWBClose}>Peanut Butter</MenuItem>
+            <MenuItem onClick={handleWBClose}>Chai Tea</MenuItem>
+            <TextField label="Add to Board" variant="outlined" />
+        </Menu>
+        <Menu
+            id="account"
+            anchorEl={account}
+            keepMounted
+            open={Boolean(account)}
+            onClose={handleAccountClose}
+        >
+            <MenuItem onClick={handleAccountClose}>Logout</MenuItem>
+            <MenuItem onClick={handleAccountClose}>Profile</MenuItem>
+            <MenuItem onClick={handleAccountClose}>Preferences</MenuItem>
+        </Menu>
+
+    </AppBar>
 };
 
 export default withRouter(AppHeader);

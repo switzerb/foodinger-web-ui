@@ -1,32 +1,33 @@
 const planData = [
     {
         id: "root",
-        name: "Friday Mar 20",
-        items: [
+        type: "section",
+        title: "Friday Mar 20",
+        children: [
             {
                 id: "10",
-                name: "Tacos Al Pastor",
+                title: "Tacos Al Pastor",
                 quantity: 1,
                 unit: "each",
                 type: "recipe",
-                items: [
+                children: [
                     {
                         id: "20",
-                        name: "Fresh Tortillas",
+                        title: "Fresh Tortillas",
                         quantity: 3,
                         unit: "each",
                         type: "recipe",
-                        items: [
+                        children: [
                             {
                                 id: "30",
-                                name: "Masa",
+                                title: "Masa",
                                 quantity: 2.5,
                                 unit: "cups",
                                 type: "pantry"
                             },
                             {
                                 id: "40",
-                                name: "Salt",
+                                title: "Salt",
                                 quantity: 1,
                                 unit: "tbsp",
                                 type: "pantry"
@@ -35,28 +36,28 @@ const planData = [
                     },
                     {
                         id: "50",
-                        name: "Achiote Adobo Marinade",
+                        title: "Achiote Adobo Marinade",
                         quantity: 1,
                         unit: "each",
                         type: "recipe",
-                        items: [
+                        children: [
                             {
                                 id: "60",
-                                name: "achiote Paste",
+                                title: "achiote Paste",
                                 quantity: 1,
                                 unit: "tbsp",
                                 type: "pantry"
                             },
                             {
                                 id: "70",
-                                name: "garlic",
+                                title: "garlic",
                                 quantity: 3,
                                 unit: "cloves",
                                 type: "pantry"
                             },
                             {
                                 id: "80",
-                                name: "guajillo chiles",
+                                title: "guajillo chiles",
                                 quantity: 2,
                                 unit: "each",
                                 type: "pantry"
@@ -69,18 +70,19 @@ const planData = [
     },
     {
         id: "root",
-        name: "Saturday Mar 21",
-        items: [
+        type: "section",
+        title: "Saturday Mar 21",
+        children: [
             {
                 id: "110",
-                name: "Chicken Francese",
+                title: "Chicken Francese",
                 quantity: 2,
                 unit: "each",
                 type: "recipe",
-                items: [
+                children: [
                     {
                         id: "160",
-                        name: "chicken",
+                        title: "chicken",
                         quantity: 1,
                         unit: "lb",
                         type: "pantry"
@@ -89,21 +91,21 @@ const planData = [
             },
             {
                 id: "120",
-                name: "Vanilla Cupcakes",
+                title: "Vanilla Cupcakes",
                 quantity: 1,
                 unit: "each",
                 type: "recipe",
-                items: [
+                children: [
                     {
                         id: "130",
-                        name: "milk",
+                        title: "milk",
                         quantity: 1,
                         unit: "cup",
                         type: "pantry"
                     },
                     {
                         id: "140",
-                        name: "sugar",
+                        title: "sugar",
                         quantity: 1.25,
                         unit: "cup",
                         type: "pantry"
@@ -112,7 +114,7 @@ const planData = [
             },
             {
                 id: "150",
-                name: "Broccoli",
+                title: "Broccoli",
                 quantity: 2,
                 unit: "bunches",
                 type: "pantry"
@@ -121,13 +123,15 @@ const planData = [
     },
     {
         id: "root",
-        name: "Sunday Mar 22",
-        items: []
+        type: "section",
+        title: "Sunday Mar 22",
+        children: []
     },
     {
         id: "root",
-        name: "Monday Mar 23",
-        items: []
+        type: "section",
+        title: "Monday Mar 23",
+        children: []
     }
 ];
 

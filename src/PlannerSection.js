@@ -20,8 +20,8 @@ const PlannerSection = ({section}) => {
     const classes = useStyles();
     return (
         <Paper className={classes.root}>
-            <Typography variant="h6">{section.name}</Typography>
-            { section.items.map(item => <PlannerSectionItem item={item}/>) }
+            <Typography variant="h6">{section.title}</Typography>
+            { section.children.map( node => <PlannerSectionItem node={node}/>) }
         </Paper>)
 };
 

@@ -78,12 +78,12 @@ const PantryActions = () => (
     </ButtonGroup>
 );
 
-const PlannerSectionItem = ({item}) => {
+const PlannerSectionItem = ({node}) => {
 
     const renderTree = nodes => {
         return (
-            <PlannerRecipeItem nodeId={nodes.id} labelText={nodes.name} type={nodes.type}>
-                {Array.isArray(nodes.items) ? nodes.items.map(node => renderTree(node)) : null}
+            <PlannerRecipeItem nodeId={nodes.id} labelText={nodes.title} type={nodes.type}>
+                {Array.isArray(nodes.children) ? nodes.children.map(node => renderTree(node)) : null}
             </PlannerRecipeItem>)
     };
 
@@ -93,7 +93,7 @@ const PlannerSectionItem = ({item}) => {
             defaultExpanded={['root']}
             defaultExpandIcon={<ChevronRight/>}
         >
-            {renderTree(item)}
+            {renderTree(node)}
         </TreeView>
     );
 

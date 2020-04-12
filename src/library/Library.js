@@ -2,7 +2,7 @@ import React from "react";
 import Grid from '@material-ui/core/Grid';
 import RecipeCard from "./RecipeCard";
 import SearchBar from "./SearchBar";
-import recipes from "./data/recipes";
+import recipes from "../data/recipes";
 
 const Library = () => {
     return <React.Fragment>

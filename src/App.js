@@ -5,8 +5,8 @@ import {
     Switch,
     Route
 } from "react-router-dom";
-import Library from "./Library";
-import Planner from "./Planner";
+import Library from "./library/Library";
+import Planner from "./planner/Planner";
 import ShoppingList from "./shopping/ShoppingList";
 import Tasks from "./Tasks";
 

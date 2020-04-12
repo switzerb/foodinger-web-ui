@@ -17,6 +17,6 @@ export default {
     nodeContentRenderer,
     treeNodeRenderer,
     scaffoldBlockPxWidth: 25,
-    rowHeight: 35,
+    rowHeight: 50,
     slideRegionSize: 50,
 };

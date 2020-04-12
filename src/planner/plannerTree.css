@@ -34,7 +34,7 @@
 }
 
 .section {
-    border-top: 3px solid red;
+    border-top: 1px solid gray;
 }
 
 .actions, .icons {

@@ -1,6 +1,6 @@
 const planData = [
     {
-        id: "root",
+        id: "1",
         type: "section",
         title: "Friday Mar 20",
         children: [
@@ -69,7 +69,7 @@ const planData = [
         ]
     },
     {
-        id: "root",
+        id: "111",
         type: "section",
         title: "Saturday Mar 21",
         children: [
@@ -122,13 +122,13 @@ const planData = [
         ]
     },
     {
-        id: "root",
+        id: "1111",
         type: "section",
         title: "Sunday Mar 22",
         children: []
     },
     {
-        id: "root",
+        id: "11111",
         type: "section",
         title: "Monday Mar 23",
         children: []

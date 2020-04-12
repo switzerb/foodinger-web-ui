@@ -2,7 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { isDescendant } from '../util/treeData';
 import "./plannerTree.css";
-
+import {
+    Box,
+    Typography,
+    ListItem,
+    Button
+} from "@material-ui/core";
 import {
     DragIndicator,
     ExpandMore,
@@ -22,6 +27,13 @@ function classnames(...classes) {
 }
 
 class NodeContentRenderer extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            activeItem: -1
+        }
+    }
 
     dragHandle() {
         const { canDrag, node, connectDragSource } = this.props;
@@ -53,6 +65,14 @@ class NodeContentRenderer extends Component {
             }
         }
         return handle;
+    }
+
+    showToolbar(id) {
+        this.setState({activeItem: id});
+    }
+
+    hideToolbar() {
+        this.setState({activeItem: -1})
     }
 
     renderCollapse() {
@@ -101,9 +121,9 @@ class NodeContentRenderer extends Component {
         const { buttons } = this.props;
         return (<div className="actions">
             {buttons.map((btn, index) => (
-                <div key={index} className="icons">
+                <Button key={index} className="icons">
                     {btn}
-                </div>
+                </Button>
             ))}
         </div>)
     }
@@ -189,6 +209,7 @@ class NodeContentRenderer extends Component {
                             ...style,
                         }}
                     >
+                        <ListItem onMouseEnter={() => this.showToolbar(node.id)} onMouseLeave={() => this.hideToolbar()}>
                         { canDrag ? this.dragHandle() : null }
                         {
                             toggleChildrenVisibility &&
@@ -196,13 +217,14 @@ class NodeContentRenderer extends Component {
                             (node.children.length > 0 || typeof node.children === 'function') &&
                             this.renderCollapse()
                         }
-                        <div className='rowContents'>
-                            <div className={'rst__rowLabel'}>
+                        <Box className='rowContents'>
+                            <Typography>
                                 { this.renderTitle() }
                                 { this.renderSubtitle() }
-                            </div>
-                            { this.renderButtonToolbar() }
-                        </div>
+                            </Typography>
+                            { this.state.activeItem === node.id ? this.renderButtonToolbar() : null }
+                        </Box>
+                        </ListItem>
                     </div>
                 )}
             </div>

@@ -6,17 +6,23 @@ import {
 import 'react-sortable-tree/style.css';
 import SortableTree from "react-sortable-tree";
 import PlannerSortableTree from "./PlannerSortableTree";
-import {AddCircle, CallSplit, Close, DeleteForever, Launch, Lens} from "@material-ui/icons";
+import {
+    AddCircle,
+    CallSplit,
+    Close,
+    DeleteForever,
+    Kitchen,
+    Launch,
+    Lens
+} from "@material-ui/icons";
 import Detail from "../Detail";
 import planData from "../data/planData";
 import Typography from "@material-ui/core/Typography";
 import PlannerSection from "./PlannerSection";
 
-// TODO: I'm ready to cook! interface -- kitchen view
-
 const Planner = () => {
     const [state, setState] = React.useState({
-        detail: true,
+        detail: false,
         treeData: planData
     });
 
@@ -43,6 +49,7 @@ const Planner = () => {
                         <Launch onClick={toggleDrawer()}/>,
                         <Close onClick={console.log} />,
                         <Lens onClick={console.log}/>,
+                        <Kitchen onClick={console.log} />
                     ]
 
                 };
@@ -72,14 +79,14 @@ const Planner = () => {
                     generateNodeProps={row => getActions(row.node.type)}
                 />
             </div>
-            {/*<Typography variant="h5">Week of March 20</Typography>*/}
-            {/*{*/}
-            {/*    state.treeData.map(section => {*/}
-            {/*        return (*/}
-            {/*            <PlannerSection section={section} />*/}
-            {/*        )*/}
-            {/*    })*/}
-            {/*}*/}
+            <Typography variant="h5">Week of March 20</Typography>
+            {
+                state.treeData.map(section => {
+                    return (
+                        <PlannerSection section={section} />
+                    )
+                })
+            }
 
             <Drawer
                 anchor="right"

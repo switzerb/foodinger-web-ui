@@ -12,6 +12,8 @@ import planData from "./data/planData";
 import Typography from "@material-ui/core/Typography";
 import PlannerSection from "./PlannerSection";
 
+// TODO: I'm ready to cook! interface -- kitchen view
+
 const Planner = () => {
     const [state, setState] = React.useState({
         detail: true,

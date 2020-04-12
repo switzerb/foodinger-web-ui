@@ -91,6 +91,7 @@ const AppHeader = (props) => {
             <MenuItem onClick={handleWBClose}>Peanut Butter</MenuItem>
             <MenuItem onClick={handleWBClose}>Chai Tea</MenuItem>
             <TextField label="Add to Board" variant="outlined" />
+            <MenuItem><Link to="/nowhere">Go to Whiteboard --></Link></MenuItem>
         </Menu>
         <Menu
             id="account"

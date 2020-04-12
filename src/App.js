@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import Library from "./Library";
 import Planner from "./Planner";
-import ShoppingList from "./ShoppingList";
+import ShoppingList from "./shopping/ShoppingList";
 import Tasks from "./Tasks";
 
 

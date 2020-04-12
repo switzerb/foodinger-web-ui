@@ -79,15 +79,6 @@ const Planner = () => {
                     generateNodeProps={row => getActions(row.node.type)}
                 />
             </div>
-            <Typography variant="h5">Week of March 20</Typography>
-            {
-                state.treeData.map(section => {
-                    return (
-                        <PlannerSection section={section} />
-                    )
-                })
-            }
-
             <Drawer
                 anchor="right"
                 open={state.detail}

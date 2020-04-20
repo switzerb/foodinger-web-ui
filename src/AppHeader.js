@@ -1,36 +1,41 @@
-import React from 'react';
+import React from "react";
 import {
     AppBar,
+    Card,
+    IconButton,
+    Menu,
+    MenuItem,
+    Select,
     Tabs,
     Tab,
+    TextField,
     Toolbar,
     Typography
-} from '@material-ui/core';
+} from "@material-ui/core";
 import {
     makeStyles
-} from '@material-ui/core/styles'
+} from "@material-ui/core/styles"
 import {
     Link,
-    useParams,
     withRouter
-} from 'react-router-dom';
+} from "react-router-dom";
+import {
+    AccountCircle,
+    Assignment,
+    EventNote,
+    List,
+    MenuBook,
+    ShoppingCart,
+} from "@material-ui/icons";
 import Logo from "./Logo";
-import IconButton from '@material-ui/core/IconButton';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import AssignmentIcon from '@material-ui/icons/Assignment';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import MenuBookIcon from '@material-ui/icons/MenuBook';
-import ListIcon from '@material-ui/icons/List';
-import EventNoteIcon from '@material-ui/icons/EventNote';
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
-import Card from "@material-ui/core/Card";
-import TextField from "@material-ui/core/TextField";
+import planners from "./data/planners";
+import InputLabel from "@material-ui/core/InputLabel";
+import SelectPlan from "./planner/SelectPlan";
 
 const styles = makeStyles(theme => ({
     root: {
         flexGrow: 1,
-        backgroundColor: '#fff'
+        backgroundColor: "#fff"
     },
     title: {
         flexGrow: 1,
@@ -70,12 +75,13 @@ const AppHeader = (props) => {
                     indicatorColor="primary"
                     textColor="primary"
                 >
-                    <Tab icon={<MenuBookIcon />}     component={Link} to="library"  label="Library"   value="library" />
-                    <Tab icon={<EventNoteIcon />}    component={Link} to="planner"  label="Planner"   value="planner"/>
-                    <Tab icon={<ShoppingCartIcon />} component={Link} to="shopping" label="Shopping"  value="shopping"/>
-                    <Tab icon={<ListIcon />}         component={Link} to="tasks"    label="Tasks"     value="tasks"/>
+                    <Tab icon={<MenuBook />}     component={Link} to="library"  label="Library"   value="library" />
+                    <Tab icon={<EventNote />}    component={Link} to="planner"  label="Planner"   value="planner"/>
+                    <Tab icon={<ShoppingCart />} component={Link} to="shopping" label="Shopping"  value="shopping"/>
+                    <Tab icon={<List />}         component={Link} to="tasks"    label="Tasks"     value="tasks"/>
+                    <Tab component={SelectPlan} />
                 </Tabs>
-                <IconButton onClick={handleWBOpen}><AssignmentIcon /></IconButton>
+                <IconButton onClick={handleWBOpen}><Assignment /></IconButton>
                 <IconButton onClick={handleAccountOpen}><AccountCircle /></IconButton>
             </Toolbar>
         <Menu
@@ -104,7 +110,6 @@ const AppHeader = (props) => {
             <MenuItem onClick={handleAccountClose}>Profile</MenuItem>
             <MenuItem onClick={handleAccountClose}>Preferences</MenuItem>
         </Menu>
-
     </AppBar>
 };
 

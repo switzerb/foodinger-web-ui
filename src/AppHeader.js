@@ -35,7 +35,7 @@ import SelectPlan from "./planner/SelectPlan";
 const styles = makeStyles(theme => ({
     root: {
         flexGrow: 1,
-        backgroundColor: "#fff"
+        backgroundColor: "#fff",
     },
     title: {
         flexGrow: 1,
@@ -67,9 +67,6 @@ const AppHeader = (props) => {
     return <AppBar className={classes.root}>
             <Toolbar>
                 <Logo />
-                <Typography className={classes.title} color="textPrimary">
-                    Foodinger
-                </Typography>
                 <Tabs
                     value={pathname.substring(1)}
                     indicatorColor="primary"

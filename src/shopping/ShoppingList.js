@@ -6,7 +6,8 @@ import {
     ListItem,
     ListItemText,
     ListItemIcon,
-    ListItemSecondaryAction
+    ListItemSecondaryAction,
+    Typography
 } from "@material-ui/core";
 import {
     Delete,
@@ -16,6 +17,7 @@ import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
+import ShoppingListFilters from "./ShoppingListFilters";
 
 const items = [
     "whole milk",
@@ -69,30 +71,10 @@ const ShoppingListItem = ({item, idx}) => {
 
 const ShoppingList = () => {
 
-    const [plannerName, setPlannerName] = React.useState([]);
-
-    const handleChange = event => {
-        setPlannerName(event.target.value);
-    };
-
-
     return (
         <div>
-            <InputLabel id="demo-mutiple-name-label">Choose Planners to Shop</InputLabel>
-            <Select
-                labelId="demo-mutiple-name-label"
-                id="demo-mutiple-name"
-                multiple
-                value={plannerName}
-                onChange={handleChange}
-                input={<Input/>}
-            >
-                {planners.map(plan => (
-                    <MenuItem key={plan} value={plan}>
-                        {plan}
-                    </MenuItem>
-                ))}
-            </Select>
+            <ShoppingListFilters/>
+            <Typography variant="h3">Shopping List</Typography>
             <List>
                 {items.map((item, idx) => <ShoppingListItem item={item} idx={idx}/>)}
             </List>

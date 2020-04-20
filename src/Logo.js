@@ -3,15 +3,11 @@ import {makeStyles} from "@material-ui/core/styles";
 
 const styles = makeStyles(theme => ({
         root: {
-            fontSize: "3em",
+            fontSize: "2.5em",
             color: "black",
-            fontWeight: "bold",
-            width: "90px"
         },
         F: {
-            transform: "scaleX(-1)",
-            display: "inline-block",
-            color: "rgba(0,0,0,.4)"
+            fontFamily: "Pacifico",
         }
     })
 );
@@ -20,8 +16,7 @@ const Logo = () => {
     const classes = styles();
     return (
         <div className={classes.root}>
-            <span className={classes.F}>F</span>
-            <span>F</span>
+            <span className={classes.F}>Foodinger</span>
         </div>);
 };
 

@@ -37,6 +37,9 @@ const styles = makeStyles(theme => ({
         flexGrow: 1,
         backgroundColor: "#fff",
     },
+    toolbar: {
+      display: "flex"
+    },
     title: {
         flexGrow: 1,
     }
@@ -65,19 +68,20 @@ const AppHeader = (props) => {
     };
 
     return <AppBar className={classes.root}>
-            <Toolbar>
-                <Logo />
-                <Tabs
-                    value={pathname.substring(1)}
-                    indicatorColor="primary"
-                    textColor="primary"
-                >
-                    <Tab icon={<MenuBook />}     component={Link} to="library"  label="Library"   value="library" />
-                    <Tab icon={<EventNote />}    component={Link} to="planner"  label="Planner"   value="planner"/>
-                    <Tab icon={<ShoppingCart />} component={Link} to="shopping" label="Shopping"  value="shopping"/>
-                    <Tab icon={<List />}         component={Link} to="tasks"    label="Tasks"     value="tasks"/>
-                    <Tab component={SelectPlan} />
-                </Tabs>
+            <Toolbar className={classes.toolbar}>
+                    <Logo />
+                    <Tabs
+                        className={classes.title}
+                        value={pathname.substring(1)}
+                        indicatorColor="primary"
+                        textColor="primary"
+                    >
+                        <Tab icon={<MenuBook />}     component={Link} to="library"  label="Library"   value="library" />
+                        <Tab icon={<EventNote />}    component={Link} to="planner"  label="Planner"   value="planner"/>
+                        <Tab icon={<ShoppingCart />} component={Link} to="shopping" label="Shopping"  value="shopping"/>
+                        <Tab icon={<List />}         component={Link} to="tasks"    label="Tasks"     value="tasks"/>
+                        <Tab component={SelectPlan} />
+                    </Tabs>
                 <IconButton onClick={handleWBOpen}><Assignment /></IconButton>
                 <IconButton onClick={handleAccountOpen}><AccountCircle /></IconButton>
             </Toolbar>

@@ -5,6 +5,8 @@ const styles = makeStyles(theme => ({
         root: {
             fontSize: "2.5em",
             color: "black",
+            margin: theme.spacing(3),
+            paddingRight: theme.spacing(5)
         },
         F: {
             fontFamily: "Pacifico",

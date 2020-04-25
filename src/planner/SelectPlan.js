@@ -10,12 +10,20 @@ import Popper from '@material-ui/core/Popper';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import planners from "../data/planners";
-import {InputLabel} from "@material-ui/core";
+import {
+    Box,
+    InputLabel,
+    ListItemIcon
+} from "@material-ui/core";
+import {
+    Restaurant,
+    List as ListIcon
+} from "@material-ui/icons";
 
 export default function SplitButton() {
     const [open, setOpen] = React.useState(false);
     const anchorRef = React.useRef(null);
-    const [selectedIndex, setSelectedIndex] = React.useState(1);
+    const [selectedIndex, setSelectedIndex] = React.useState(0);
 
     const handleClick = () => {
         console.info(`You clicked ${planners[selectedIndex]}`);
@@ -39,12 +47,11 @@ export default function SplitButton() {
     };
 
     return (
-        <Grid container direction="column" alignItems="center">
-            <Grid item xs={12}>
-                <ButtonGroup variant="text" color="primary" ref={anchorRef} aria-label="split button">
-                    <Button onClick={handleClick}>{planners[selectedIndex]}</Button>
+        <Box>
+                <ButtonGroup variant="text" color="black" ref={anchorRef} aria-label="split button">
+                    <Button onClick={handleClick}>{planners[selectedIndex].name}</Button>
                     <Button
-                        color="primary"
+                        color="black"
                         size="small"
                         aria-controls={open ? 'split-button-menu' : undefined}
                         aria-expanded={open ? 'true' : undefined}
@@ -68,12 +75,12 @@ export default function SplitButton() {
                                     <MenuList id="split-button-menu">
                                         {planners.map((option, index) => (
                                             <MenuItem
-                                                key={option}
-                                                disabled={index === 2}
+                                                key={option.name}
                                                 selected={index === selectedIndex}
                                                 onClick={(event) => handleMenuItemClick(event, index)}
                                             >
-                                                {option}
+                                                <ListItemIcon>{option.type ===   "meal" ? <Restaurant /> : <ListIcon />}</ListItemIcon>
+                                                {option.name}
                                             </MenuItem>
                                         ))}
                                     </MenuList>
@@ -82,7 +89,6 @@ export default function SplitButton() {
                         </Grow>
                     )}
                 </Popper>
-            </Grid>
-        </Grid>
+        </Box>
     );
 }

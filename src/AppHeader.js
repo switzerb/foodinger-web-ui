@@ -6,14 +6,19 @@ import {
     Menu,
     MenuItem,
     Select,
+    Divider,
+    List,
+    ListItem,
+    ListItemIcon,
+    ListItemText,
     Tabs,
     Tab,
     TextField,
     Toolbar,
-    Typography
+    Typography, Drawer, Container
 } from "@material-ui/core";
 import {
-    makeStyles
+    makeStyles, useTheme
 } from "@material-ui/core/styles"
 import {
     Link,
@@ -21,32 +26,69 @@ import {
 } from "react-router-dom";
 import {
     AccountCircle,
-    Assignment,
+    Assignment, ChevronLeft,
     EventNote,
-    List,
+    List as ListIcon,
     MenuBook,
     ShoppingCart,
+    Menu as MenuIcon
 } from "@material-ui/icons";
 import Logo from "./Logo";
 import planners from "./data/planners";
 import InputLabel from "@material-ui/core/InputLabel";
 import SelectPlan from "./planner/SelectPlan";
+import clsx from "clsx";
+import SearchBar from "./library/SearchBar";
+
+const drawerWidth = 440;
 
 const styles = makeStyles(theme => ({
-    root: {
-        flexGrow: 1,
-        backgroundColor: "#fff",
-    },
     toolbar: {
       display: "flex"
     },
     title: {
         flexGrow: 1,
-    }
+    },
+    appBar: {
+        flexGrow: 1,
+        zIndex: theme.zIndex.drawer + 1,
+        backgroundColor: "#fff",
+        transition: theme.transitions.create(['margin', 'width'], {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.leavingScreen,
+        }),
+    },
+    menuButton: {
+        marginRight: theme.spacing(2),
+    },
+    hide: {
+        display: 'none',
+    },
+    drawerContainer: {
+        overflow: 'auto',
+    },
+    drawer: {
+        width: drawerWidth,
+        flexShrink: 0,
+    },
+    drawerPaper: {
+        width: drawerWidth,
+    },
+    content: {
+        flexGrow: 1,
+        padding: theme.spacing(3),
+        transition: theme.transitions.create('margin', {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.leavingScreen,
+        }),
+        marginLeft: -drawerWidth,
+    },
 }));
 
 const AppHeader = (props) => {
     const classes = styles();
+    const [open, setOpen] = React.useState(false);
+
     const {pathname} = props.location;
     const [whiteboard, setWhiteBoard] = React.useState(null);
     const [account, setAccount] = React.useState(null);
@@ -67,51 +109,82 @@ const AppHeader = (props) => {
       setAccount(null);
     };
 
-    return <AppBar className={classes.root}>
+    const handleDrawerOpen = () => {
+        setOpen(true);
+    };
+
+    const handleDrawerClose = () => {
+        setOpen(false);
+    };
+
+
+    return (
+    <React.Fragment>
+        <AppBar
+            position="fixed"
+            className={clsx(classes.appBar)}
+        >
             <Toolbar className={classes.toolbar}>
-                    <Logo />
-                    <Tabs
-                        className={classes.title}
-                        value={pathname.substring(1)}
-                        indicatorColor="primary"
-                        textColor="primary"
-                    >
-                        <Tab icon={<MenuBook />}     component={Link} to="library"  label="Library"   value="library" />
-                        <Tab icon={<EventNote />}    component={Link} to="planner"  label="Planner"   value="planner"/>
-                        <Tab icon={<ShoppingCart />} component={Link} to="shopping" label="Shopping"  value="shopping"/>
-                        <Tab icon={<List />}         component={Link} to="tasks"    label="Tasks"     value="tasks"/>
-                        <Tab component={SelectPlan} />
-                    </Tabs>
-                <IconButton onClick={handleWBOpen}><Assignment /></IconButton>
+                <Logo />
+                <Divider orientation="vertical" flexItem />
+                <SearchBar />
+                <IconButton component={Link} to="library" value="library" ><MenuBook /></IconButton>
+                <Divider orientation="vertical" flexItem />
+                <IconButton  component={Link} to="planner" value="planner"><EventNote /></IconButton>
+                <SelectPlan />
+                <IconButton component={Link} to="shopping" value="shopping"><ShoppingCart /></IconButton>
+                <Divider orientation="vertical" flexItem />
+                <IconButton onClick={handleDrawerOpen}><Assignment /></IconButton>
                 <IconButton onClick={handleAccountOpen}><AccountCircle /></IconButton>
             </Toolbar>
-        <Menu
-            id="whiteboard"
-            anchorEl={whiteboard}
-            keepMounted
-            open={Boolean(whiteboard)}
-            onClose={handleWBClose}
+            <Menu
+                id="account"
+                anchorEl={account}
+                keepMounted
+                open={Boolean(account)}
+                onClose={handleAccountClose}
+            >
+                <MenuItem onClick={handleAccountClose}>Logout</MenuItem>
+                <MenuItem onClick={handleAccountClose}>Profile</MenuItem>
+                <MenuItem onClick={handleAccountClose}>Preferences</MenuItem>
+            </Menu>
+        </AppBar>
+        <Drawer
+            className={classes.drawer}
+            variant="persistent"
+            anchor="right"
+            open={open}
+            classes={{
+                paper: classes.drawerPaper,
+            }}
         >
-            <MenuItem onClick={handleWBClose}>Napalm</MenuItem>
-            <MenuItem onClick={handleWBClose}>WD40 and LightBulbs</MenuItem>
-            <MenuItem onClick={handleWBClose}>Milk</MenuItem>
-            <MenuItem onClick={handleWBClose}>Peanut Butter</MenuItem>
-            <MenuItem onClick={handleWBClose}>Chai Tea</MenuItem>
-            <TextField label="Add to Board" variant="outlined" />
-            <MenuItem><Link to="/nowhere">Go to Whiteboard --></Link></MenuItem>
-        </Menu>
-        <Menu
-            id="account"
-            anchorEl={account}
-            keepMounted
-            open={Boolean(account)}
-            onClose={handleAccountClose}
-        >
-            <MenuItem onClick={handleAccountClose}>Logout</MenuItem>
-            <MenuItem onClick={handleAccountClose}>Profile</MenuItem>
-            <MenuItem onClick={handleAccountClose}>Preferences</MenuItem>
-        </Menu>
-    </AppBar>
+            <div className={classes.drawerHeader}>
+                <IconButton onClick={handleDrawerClose}>
+                    {<ChevronLeft />}
+                </IconButton>
+            </div>
+            <List
+                id="whiteboard"
+            >
+                <ListItem>Napalm</ListItem>
+                <ListItem>WD40 and LightBulbs</ListItem>
+                <ListItem>Milk</ListItem>
+                <ListItem>Peanut Butter</ListItem>
+                <ListItem>Chai Tea</ListItem>
+                <TextField label="Add to Board" variant="outlined" />
+                <ListItem><Link to="/nowhere">Go to Whiteboard --></Link></ListItem>
+            </List>
+            <Tabs
+                orientation="vertical"
+                className={classes.title}
+                value={pathname.substring(1)}
+                indicatorColor="primary"
+                textColor="primary"
+            >
+                <Tab icon={<ListIcon />}         component={Link} to="tasks"    label="Tasks"     value="tasks"/>
+            </Tabs>
+        </Drawer>
+    </React.Fragment>)
 };
 
 export default withRouter(AppHeader);

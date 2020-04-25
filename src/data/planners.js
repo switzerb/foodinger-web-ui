@@ -1,8 +1,20 @@
 const planners  = [
-    "Week of March 2",
-    "Birthday Party",
-    "Dinner with Nick and Krissy",
-    "Week of March 9"
+    {
+        name: "Week of March 2",
+        type: "meal"
+    },
+    {
+        name: "Birthday Party",
+        type: "meal"
+    },
+    {
+        name: "Dinner with Nick and Krissy",
+        type: "meal"
+    },
+    {
+        name: "Camping",
+        type: "task"
+    }
 ];
 
 export default planners;

@@ -1,12 +1,15 @@
-import React from 'react'
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
 import {
     Container,
-    Drawer
+    Drawer,
+    Fab
 } from "@material-ui/core";
 import 'react-sortable-tree/style.css';
 import SortableTree from "react-sortable-tree";
 import PlannerSortableTree from "./PlannerSortableTree";
 import {
+    Add,
     AddCircle,
     CallSplit,
     Close,
@@ -17,10 +20,23 @@ import {
 } from "@material-ui/icons";
 import Detail from "../Detail";
 import planData from "../data/planData";
-import Typography from "@material-ui/core/Typography";
-import PlannerSection from "./PlannerSection";
+
+// TODO: Add tooltip to the status icon
+// TODO: Play around with a side navigation
+// TODO: Get drag and drop working on the current site
+// TODO: Whiteboard quick add for mobile
+// TODO: Click through the status icons
+
+const useStyles = makeStyles((theme) => ({
+    fab: {
+        position: 'absolute',
+        bottom: theme.spacing(2),
+        right: theme.spacing(2),
+    },
+}));
 
 const Planner = () => {
+    const classes = useStyles();
     const [state, setState] = React.useState({
         detail: false,
         treeData: planData
@@ -70,7 +86,8 @@ const Planner = () => {
 
     return (
         <Container>
-            <p>exapnd all / collapse all</p>
+            <p>expand all / collapse all</p>
+            <p>Add from library</p>
             <div style={{height: 400}}>
                 <SortableTree
                     theme={PlannerSortableTree}
@@ -88,6 +105,9 @@ const Planner = () => {
             >
                 <Detail/>
             </Drawer>
+            <Fab color="primary" aria-label="add" className={classes.fab}>
+                <Add />
+            </Fab>
         </Container>
     );
 };

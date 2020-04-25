@@ -16,6 +16,9 @@ import {
     Queue
 } from "@material-ui/icons";
 
+//TODO: Make the button split button here for sections of a plan, both kinds
+//TODO: Add some basic filtering to the search
+
 const useStyles = makeStyles(theme => ({
     root: {
         flexGrow: 1,
@@ -59,7 +62,7 @@ const RecipeCard = ({recipe}) => {
             </CardActionArea>
             <CardActions>
                     <Button startIcon={<Edit/>}>Edit</Button>
-                    <Button onClick={handleClick} startIcon={<AddBox/>}>Plan</Button>
+                    <Button onClick={handleClick} startIcon={<AddBox/>}>Add to Plan</Button>
                     <Button onClick={handleClick} startIcon={<Queue/>}>Plan Copy</Button>
             </CardActions>
             <Menu

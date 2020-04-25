@@ -2,7 +2,7 @@ const planData = [
     {
         id: "1",
         type: "section",
-        title: "Friday Mar 20",
+        title: "Pancakes",
         children: [
             {
                 id: "10",

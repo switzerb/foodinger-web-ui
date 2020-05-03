@@ -90,16 +90,7 @@ const AppHeader = (props) => {
     const [open, setOpen] = React.useState(false);
 
     const {pathname} = props.location;
-    const [whiteboard, setWhiteBoard] = React.useState(null);
     const [account, setAccount] = React.useState(null);
-
-    const handleWBOpen = event => {
-        setWhiteBoard(event.currentTarget);
-    };
-
-    const handleWBClose = () => {
-        setWhiteBoard(null);
-    };
 
     const handleAccountOpen = event => {
       setAccount(event.currentTarget)

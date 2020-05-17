@@ -1,24 +1,19 @@
 import React from "react";
+import clsx from "clsx";
 import {
     AppBar,
-    Card,
     IconButton,
     Menu,
     MenuItem,
-    Select,
     Divider,
     List,
     ListItem,
-    ListItemIcon,
-    ListItemText,
-    Tabs,
-    Tab,
     TextField,
     Toolbar,
-    Typography, Drawer, Container
+    Drawer
 } from "@material-ui/core";
 import {
-    makeStyles, useTheme
+    makeStyles
 } from "@material-ui/core/styles"
 import {
     Link,
@@ -28,17 +23,13 @@ import {
     AccountCircle,
     Assignment, ChevronLeft,
     EventNote,
-    List as ListIcon,
     MenuBook,
-    ShoppingCart,
-    Menu as MenuIcon
+    ShoppingCart
 } from "@material-ui/icons";
 import Logo from "./Logo";
-import planners from "./data/planners";
-import InputLabel from "@material-ui/core/InputLabel";
 import SelectPlan from "./planner/SelectPlan";
-import clsx from "clsx";
 import SearchBar from "./library/SearchBar";
+import WhiteboardDrawer from "./WhiteboardDrawer";
 
 const drawerWidth = 440;
 
@@ -64,16 +55,6 @@ const styles = makeStyles(theme => ({
     hide: {
         display: 'none',
     },
-    drawerContainer: {
-        overflow: 'auto',
-    },
-    drawer: {
-        width: drawerWidth,
-        flexShrink: 0,
-    },
-    drawerPaper: {
-        width: drawerWidth,
-    },
     content: {
         flexGrow: 1,
         padding: theme.spacing(3),
@@ -89,6 +70,14 @@ const AppHeader = (props) => {
     const classes = styles();
     const [open, setOpen] = React.useState(false);
 
+    const handleDrawerOpen = () => {
+        setOpen(true);
+    };
+
+    const handleDrawerClose = () => {
+        setOpen(false);
+    };
+
     const {pathname} = props.location;
     const [account, setAccount] = React.useState(null);
 
@@ -99,15 +88,6 @@ const AppHeader = (props) => {
     const handleAccountClose = () => {
       setAccount(null);
     };
-
-    const handleDrawerOpen = () => {
-        setOpen(true);
-    };
-
-    const handleDrawerClose = () => {
-        setOpen(false);
-    };
-
 
     return (
     <React.Fragment>
@@ -140,41 +120,7 @@ const AppHeader = (props) => {
                 <MenuItem onClick={handleAccountClose}>Preferences</MenuItem>
             </Menu>
         </AppBar>
-        <Drawer
-            className={classes.drawer}
-            variant="persistent"
-            anchor="right"
-            open={open}
-            classes={{
-                paper: classes.drawerPaper,
-            }}
-        >
-            <div className={classes.drawerHeader}>
-                <IconButton onClick={handleDrawerClose}>
-                    {<ChevronLeft />}
-                </IconButton>
-            </div>
-            <List
-                id="whiteboard"
-            >
-                <ListItem>Napalm</ListItem>
-                <ListItem>WD40 and LightBulbs</ListItem>
-                <ListItem>Milk</ListItem>
-                <ListItem>Peanut Butter</ListItem>
-                <ListItem>Chai Tea</ListItem>
-                <TextField label="Add to Board" variant="outlined" />
-                <ListItem><Link to="/nowhere">Go to Whiteboard --></Link></ListItem>
-            </List>
-            <Tabs
-                orientation="vertical"
-                className={classes.title}
-                value={pathname.substring(1)}
-                indicatorColor="primary"
-                textColor="primary"
-            >
-                <Tab icon={<ListIcon />}         component={Link} to="tasks"    label="Tasks"     value="tasks"/>
-            </Tabs>
-        </Drawer>
+        <WhiteboardDrawer onClose={handleDrawerClose} open={open} width={drawerWidth}/>
     </React.Fragment>)
 };
 

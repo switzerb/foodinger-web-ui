@@ -22,9 +22,7 @@ import Detail from "../Detail";
 import planData from "../data/planData";
 
 // TODO: Add tooltip to the status icon
-// TODO: Play around with a side navigation
 // TODO: Get drag and drop working on the current site
-// TODO: Whiteboard quick add for mobile
 // TODO: Click through the status icons
 
 const useStyles = makeStyles((theme) => ({

@@ -9,8 +9,6 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import {ThemeProvider} from '@material-ui/core/styles'
 import theme from './theme';
 
-// TODO: Add new planner flow - create new and give it a name, potentially a template, a privacy level then dropped into the empty planner
-
 ReactDOM.render(
     <Router history={history}>
         <ThemeProvider theme={theme}>
